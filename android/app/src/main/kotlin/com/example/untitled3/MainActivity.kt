@@ -1,4 +1,4 @@
-package com.example.golf_regist_app
+package com.example.untitled3
 
 import io.flutter.embedding.android.FlutterActivity
 

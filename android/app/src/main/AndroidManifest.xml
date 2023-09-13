@@ -1,16 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.golf_regist_app">
-
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="https" />
-        </intent>
-    </queries>
-    <uses-permission android:name="android.permission.INTERNET" />
-
-   <application
-        android:label="golf_regist_app"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="untitled3"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
