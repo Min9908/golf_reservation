@@ -55,30 +55,32 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
     }
 
     try {
-      final response = await http.post(
-        Uri.parse("http://61.83.77.86:5000/reservation"),
-        body: {
-          'id': loginController.id,
-          'pw': loginController.pw,
-          'personnel':
-              personnelController.getSelectedValue('container').toString(),
-          'selectedDay': calendarController.formattedSelectedDay.toString(),
-          'nextFuture': calendarController.formattedNextFuture.value,
-          'futureTime': timeSetController.formattedTime,
-        },
-      );
+      if (calendarForm.checkboxController.isChecked.value) {
+        final response = await http.post(
+          Uri.parse("http://61.83.77.86:5000/reservation"),
+          body: {
+            'id': loginController.id,
+            'pw': loginController.pw,
+            'personnel':
+                personnelController.getSelectedValue('container').toString(),
+            'selectedDay': calendarController.formattedSelectedDay.toString(),
+            'nextFuture': calendarController.formattedNextFuture.value,
+            'futureTime': timeSetController.formattedTime,
+          },
+        );
 
-      if (response.statusCode == 200) {
-        debugPrint('예약 접수 완료');
-        Get.snackbar('notice', '스케줄 예약이 완료되었습니다.');
-      } else if (response.statusCode == 500) {
-        final responseData = jsonDecode(response.body);
-        final errorMessage = responseData['error'];
-        Get.snackbar('notice', errorMessage);
-      } else {
-        final responseData = jsonDecode(response.body);
-        final errorMessage = responseData['error'];
-        Get.snackbar('notice', errorMessage);
+        if (response.statusCode == 200) {
+          debugPrint('예약 접수 완료');
+          Get.snackbar('notice', '스케줄 예약이 완료되었습니다.');
+        } else if (response.statusCode == 500) {
+          final responseData = jsonDecode(response.body);
+          final errorMessage = responseData['error'];
+          Get.snackbar('notice', errorMessage);
+        } else {
+          final responseData = jsonDecode(response.body);
+          final errorMessage = responseData['error'];
+          Get.snackbar('notice', errorMessage);
+        }
       }
     } catch (e) {
       Get.snackbar('notice', '예약 실패..');
@@ -92,30 +94,32 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
     }
 
     try {
-      final response = await http.post(
-        Uri.parse("http://61.83.77.86:5000/reservation"),
-        body: {
-          'id': loginController.id,
-          'pw': loginController.pw,
-          'personnel':
-              personnelController.getSelectedValue('container2').toString(),
-          'selectedDay': calendarController.formattedSelectedDay.toString(),
-          'nextFuture': calendarController.formattedNextSaturday.value,
-          'futureTime': timeSetController2.formattedTime,
-        },
-      );
+      if (calendarForm.checkboxController.isChecked2.value) {
+        final response = await http.post(
+          Uri.parse("http://61.83.77.86:5000/reservation"),
+          body: {
+            'id': loginController.id,
+            'pw': loginController.pw,
+            'personnel':
+                personnelController.getSelectedValue('container2').toString(),
+            'selectedDay': calendarController.formattedSelectedDay.toString(),
+            'nextFuture': calendarController.formattedNextSaturday.value,
+            'futureTime': timeSetController2.formattedTime,
+          },
+        );
 
-      if (response.statusCode == 200) {
-        debugPrint('예약 접수 완료');
-        Get.snackbar('notice', '스케줄 예약이 완료되었습니다.');
-      } else if (response.statusCode == 500) {
-        final responseData = jsonDecode(response.body);
-        final errorMessage = responseData['error'];
-        Get.snackbar('notice', errorMessage);
-      } else {
-        final responseData = jsonDecode(response.body);
-        final errorMessage = responseData['error'];
-        Get.snackbar('notice', errorMessage);
+        if (response.statusCode == 200) {
+          debugPrint('예약 접수 완료');
+          Get.snackbar('notice', '스케줄 예약이 완료되었습니다.');
+        } else if (response.statusCode == 500) {
+          final responseData = jsonDecode(response.body);
+          final errorMessage = responseData['error'];
+          Get.snackbar('notice', errorMessage);
+        } else {
+          final responseData = jsonDecode(response.body);
+          final errorMessage = responseData['error'];
+          Get.snackbar('notice', errorMessage);
+        }
       }
     } catch (e) {
       Get.snackbar('notice', '예약 실패..');
@@ -129,30 +133,32 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
     }
 
     try {
-      final response = await http.post(
-        Uri.parse("http://61.83.77.86:5000/reservation"),
-        body: {
-          'id': loginController.id,
-          'pw': loginController.pw,
-          'personnel':
-              personnelController.getSelectedValue('container3').toString(),
-          'selectedDay': calendarController.formattedSelectedDay.toString(),
-          'nextFuture': calendarController.formattedNextSaturday.value,
-          'futureTime': timeSetController3.formattedTime,
-        },
-      );
+      if (calendarForm.checkboxController.isChecked3.value) {
+        final response = await http.post(
+          Uri.parse("http://61.83.77.86:5000/reservation"),
+          body: {
+            'id': loginController.id,
+            'pw': loginController.pw,
+            'personnel':
+                personnelController.getSelectedValue('container3').toString(),
+            'selectedDay': calendarController.formattedSelectedDay.toString(),
+            'nextFuture': calendarController.formattedNextSunday.value,
+            'futureTime': timeSetController3.formattedTime,
+          },
+        );
 
-      if (response.statusCode == 200) {
-        debugPrint('예약 접수 완료');
-        Get.snackbar('notice', '스케줄 예약이 완료되었습니다.');
-      } else if (response.statusCode == 500) {
-        final responseData = jsonDecode(response.body);
-        final errorMessage = responseData['error'];
-        Get.snackbar('notice', errorMessage);
-      } else {
-        final responseData = jsonDecode(response.body);
-        final errorMessage = responseData['error'];
-        Get.snackbar('notice', errorMessage);
+        if (response.statusCode == 200) {
+          debugPrint('예약 접수 완료');
+          Get.snackbar('notice', '스케줄 예약이 완료되었습니다.');
+        } else if (response.statusCode == 500) {
+          final responseData = jsonDecode(response.body);
+          final errorMessage = responseData['error'];
+          Get.snackbar('notice', errorMessage);
+        } else {
+          final responseData = jsonDecode(response.body);
+          final errorMessage = responseData['error'];
+          Get.snackbar('notice', errorMessage);
+        }
       }
     } catch (e) {
       Get.snackbar('notice', '예약 실패..');
