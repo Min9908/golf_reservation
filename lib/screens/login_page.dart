@@ -1,6 +1,15 @@
+import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:golf_regist_app/controller/login_controller.dart';
+import 'package:golf_regist_app/controller/reservation_calendar_controller.dart';
+import 'package:golf_regist_app/controller/reservation_personnel_controller.dart';
+import 'package:golf_regist_app/controller/reservation_timeset_controller.dart';
+import 'package:golf_regist_app/controller/reservation_timeset_controller2.dart';
+import 'package:golf_regist_app/controller/reservation_timeset_controller3.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:golf_regist_app/entity/user.dart';
+import 'package:golf_regist_app/controller/reservation_calendar_controller.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController idController = TextEditingController();
@@ -26,6 +35,12 @@ class LoginPage extends StatelessWidget {
       }
     }
     if (loginSuccessful) {
+      Get.put(ReservationCalendarController());
+      Get.put(LoginController());
+      Get.put(ReservationPersonnelController());
+      Get.put(ReservationTimeSetController());
+      Get.put(ReservationTimeSetController2());
+      Get.put(ReservationTimeSetController3());
       Get.offAllNamed('/reservation_page');
     } else {
       Get.snackbar('로그인에 실패했습니다.', '아이디, 비밀번호를 다시 확인해주세요.');
@@ -49,7 +64,7 @@ class LoginPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: 250,  // 너비 조정
+                    width: 250, // 너비 조정
                     child: TextField(
                       controller: idController,
                       decoration: InputDecoration(
@@ -60,7 +75,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: 16.0),
                   SizedBox(
-                    width: 250,  // 너비 조정
+                    width: 250, // 너비 조정
                     child: TextField(
                       controller: pwController,
                       decoration: InputDecoration(
@@ -79,7 +94,8 @@ class LoginPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 32.0, vertical: 12.0),
                     ),
                     child: Text(
                       '로그인',

@@ -25,27 +25,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialBinding: BindingsBuilder(() {
-        Get.lazyPut<ReservationCalendarController>(() => ReservationCalendarController());
-        Get.lazyPut<ReservationTimeSetController>(() => ReservationTimeSetController());
-        Get.lazyPut<ReservationTimeSetController2>(() => ReservationTimeSetController2());
-        Get.lazyPut<ReservationTimeSetController3>(() => ReservationTimeSetController3());
-        Get.lazyPut<LoginController>(() => LoginController());
-        Get.lazyPut<ReservationPersonnelController>(() => ReservationPersonnelController());
+        Get.put<ReservationCalendarController>(ReservationCalendarController());
+        Get.put<ReservationTimeSetController>(ReservationTimeSetController());
+        Get.put<ReservationTimeSetController2>(ReservationTimeSetController2());
+        Get.put<ReservationTimeSetController3>(ReservationTimeSetController3());
+        Get.put<LoginController>(LoginController());
+        Get.put<ReservationPersonnelController>(
+            ReservationPersonnelController());
       }),
       // scrollBehavior: const MaterialScrollBehavior().copyWith(
       //   dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch, PointerDeviceKind.stylus, PointerDeviceKind.unknown},
       // ),
       title: 'Golf Reservation',
       theme: ThemeData(
-        // Your app theme data
-      ),
+          // Your app theme data
+          ),
       initialRoute: '/',
       getPages: [
         GetPage(name: "/", page: () => LoginPage()),
         GetPage(name: "/reservation_page", page: () => const ReservationPage()),
       ],
-
-
     );
   }
 }

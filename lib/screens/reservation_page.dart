@@ -35,6 +35,12 @@ class _ReservationPageState extends State<ReservationPage>
     super.dispose();
   }
 
+  void _logout() {
+    // 컨트롤러 초기화
+    // 로그아웃 후 처음으로 돌아가기
+    Get.offAllNamed('/');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +112,7 @@ class _ReservationPageState extends State<ReservationPage>
         onTap: (index) {
           if (index == 1) {
             // 로그아웃 처리 코드를 여기에 작성하세요.
-            runApp(const MyApp());
+            _logout();
           }
         },
       ),
