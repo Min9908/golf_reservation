@@ -41,37 +41,57 @@ class _ReservationPageState extends State<ReservationPage>
     Get.offAllNamed('/');
   }
 
+  String selectedSortOption = '드비치';
+
+  void selectSortOption(String option) {
+    setState(() {
+      selectedSortOption = option;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('골프 스케줄 예약/취소'),
+        title: Text('골프 예약'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: Row(
+              children: [
+                PopupMenuButton<String>(
+                  onSelected: selectSortOption,
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: '드비치',
+                      child: Text('드비치'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: '골프장1',
+                      child: Text('골프장1'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: '골프장2',
+                      child: Text('골프장2'),
+                    )
+                  ],
+                  child: Row(
+                    children: [
+                      Text('$selectedSortOption'),
+                      const Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
         centerTitle: true,
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(67.0),
+          preferredSize: const Size.fromHeight(40.0),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Row(
-                  children: [
-                    const Text('골프장', style: TextStyle(fontSize: 15)),
-                    Container(
-                      width: 70.0,
-                      margin: const EdgeInsets.only(left: 20.0),
-                      color: Colors.grey[200],
-                      child: Center(
-                        child: TextField(
-                          controller: TextEditingController(text: '드비치'),
-                          enabled: false,
-                          showCursor: false,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               TabBar(
                 controller: _tabController,
                 indicatorColor: Colors.black,
