@@ -11,6 +11,8 @@ import 'package:golf_regist_app/controller/time_priorities_controller.dart';
 import 'package:golf_regist_app/widgets/PriorityListTile.dart';
 import 'package:golf_regist_app/widgets/reservation_calendar_form.dart';
 import 'package:golf_regist_app/widgets/reservation_personnel_form.dart';
+import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:flutter/services.dart';
 
 class ReservationTimeSetForm extends StatefulWidget {
   const ReservationTimeSetForm({Key? key}) : super(key: key);
@@ -336,16 +338,19 @@ class _ReservationTimeSetFormState extends State<ReservationTimeSetForm> {
           scrollController: FixedExtentScrollController(
             initialItem: itemList.indexOf(selectedItem.value),
           ),
-          itemExtent: 32,
-          onSelectedItemChanged: (int index) {
-            setSelectedItem(itemList[index]);
+          itemExtent: 50,
+          onSelectedItemChanged: (index) {
+            setState(() {
+              setSelectedItem(itemList[index]);
+              HapticFeedback.mediumImpact();
+            });
           },
           children: itemList.map((String item) {
             return Text(
               item,
               style: const TextStyle(
                   color: Colors.lightBlue,
-                  fontSize: 20,
+                  fontSize: 30,
                   fontWeight: FontWeight.w600),
             );
           }).toList(),

@@ -242,11 +242,11 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
           child: SingleChildScrollView(
             child: Column(children: [
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(20.0),
                 child: currentPage,
               ),
               Align(
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.bottomRight,
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: Column(
