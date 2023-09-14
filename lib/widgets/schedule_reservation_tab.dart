@@ -36,6 +36,7 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
   final ReservationTimeSetController3 timeSetController3 =
       Get.find<ReservationTimeSetController3>();
   final ReservationCalendarForm calendarForm = ReservationCalendarForm();
+
   @override
   void initState() {
     super.initState();
@@ -49,13 +50,18 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
   }
 
   Future<void> _submit(BuildContext context) async {
+    final ReservationCalendarController controller =
+        Get.find<ReservationCalendarController>();
+    final selectedDayOfWeek = controller.selectedDate.value.weekday;
+
     if (calendarController.isWeekendSelected.value) {
       Get.snackbar('notice', '주말 예약 접수는 불가능합니다.');
       return;
     }
 
     try {
-      if (calendarForm.checkboxController.isChecked.value) {
+      if (calendarForm.checkboxController.isChecked.value ||
+          selectedDayOfWeek != 3) {
         final response = await http.post(
           Uri.parse("http://61.83.77.86:5000/reservation"),
           body: {
@@ -88,13 +94,17 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
   }
 
   Future<void> _submit2(BuildContext context) async {
+    final ReservationCalendarController controller =
+        Get.find<ReservationCalendarController>();
+    final selectedDayOfWeek = controller.selectedDate.value.weekday;
     if (calendarController.isWeekendSelected.value) {
       Get.snackbar('notice', '주말 예약 접수는 불가능합니다.');
       return;
     }
 
     try {
-      if (calendarForm.checkboxController.isChecked2.value) {
+      if (calendarForm.checkboxController.isChecked2.value &&
+          selectedDayOfWeek == 3) {
         final response = await http.post(
           Uri.parse("http://61.83.77.86:5000/reservation"),
           body: {
@@ -127,13 +137,17 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
   }
 
   Future<void> _submit3(BuildContext context) async {
+    final ReservationCalendarController controller =
+        Get.find<ReservationCalendarController>();
+    final selectedDayOfWeek = controller.selectedDate.value.weekday;
     if (calendarController.isWeekendSelected.value) {
       Get.snackbar('notice', '주말 예약 접수는 불가능합니다.');
       return;
     }
 
     try {
-      if (calendarForm.checkboxController.isChecked3.value) {
+      if (calendarForm.checkboxController.isChecked3.value &&
+          selectedDayOfWeek == 3) {
         final response = await http.post(
           Uri.parse("http://61.83.77.86:5000/reservation"),
           body: {
