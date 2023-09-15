@@ -321,7 +321,7 @@ class _ReservationTimeSetFormState extends State<ReservationTimeSetForm> {
   Widget _buildCupertinoPicker(List<String> itemList, RxString selectedItem,
       Function(String) setSelectedItem) {
     return Container(
-      width: 180,
+      width: 120,
       height: 120,
       child: Obx(
         () => CupertinoPicker(
