@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ReservationTimeSetController3 extends GetxController { // 테스트
+class ReservationTimeSetController3 extends GetxController {
+  // 테스트
   final List<String> amPmList = ['AM', 'PM'];
   final List<String> hourList = [
     '00',
@@ -82,7 +83,7 @@ class ReservationTimeSetController3 extends GetxController { // 테스트
   ];
 
   RxString selectedAmPm = 'AM'.obs;
-  RxString selectedHour = '00'.obs;
+  RxString selectedHour = '06'.obs;
   RxString selectedMinute = '00'.obs;
 
   String get formattedTime {
@@ -113,4 +114,3 @@ class ReservationTimeSetController3 extends GetxController { // 테스트
         (value) => debugPrint('selectedMinute3 changed: $value'));
   }
 }
-

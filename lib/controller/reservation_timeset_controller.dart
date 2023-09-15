@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ReservationTimeSetController extends GetxController {
-  final List<String> amPmList = ['AM', 'PM'];
   final List<String> hourList = [
     '00',
     '01',
@@ -16,7 +15,18 @@ class ReservationTimeSetController extends GetxController {
     '09',
     '10',
     '11',
-    '12'
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
   ];
   final List<String> minuteList = [
     '00',
@@ -78,22 +88,13 @@ class ReservationTimeSetController extends GetxController {
     '56',
     '57',
     '58',
-    '59'
+    '59',
   ];
-
-  RxString selectedAmPm = 'AM'.obs;
-  RxString selectedHour = '00'.obs;
+  RxString selectedHour = '06'.obs;
   RxString selectedMinute = '00'.obs;
 
   String get formattedTime {
-    int hour24Format = selectedAmPm.value == 'AM'
-        ? int.parse(selectedHour.value)
-        : int.parse(selectedHour.value) + 12;
-    return '${hour24Format.toString().padLeft(2, '0')}:${selectedMinute.value}';
-  }
-
-  void setSelectedAmPm(String value) {
-    selectedAmPm.value = value;
+    return '${selectedHour.value}:${selectedMinute.value}';
   }
 
   void setSelectedHour(String value) {
@@ -107,9 +108,8 @@ class ReservationTimeSetController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    ever(selectedAmPm, (value) => debugPrint('selectedAmPm changed: $value'));
     ever(selectedHour, (value) => debugPrint('selectedHour changed: $value'));
     ever(selectedMinute,
-            (value) => debugPrint('selectedMinute changed: $value'));
+        (value) => debugPrint('selectedMinute changed: $value'));
   }
 }

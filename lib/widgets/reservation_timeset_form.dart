@@ -71,268 +71,258 @@ class _ReservationTimeSetFormState extends State<ReservationTimeSetForm> {
       //   title: '일자를 선택해 주세요.',
       // );
     }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 10),
         Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  blurRadius: 10,
-                  offset: const Offset(0, 5),
-                ),
-              ],
-            ),
-            child: IntrinsicHeight(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Obx(() {
-                  if (calendarController.selectedFutureDate.value.weekday ==
-                      3) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Visibility(
-                          visible:
-                              calendarForm.checkboxController.isChecked.value,
-                          child: Container(
-                            // height: 160,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.2),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 5),
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 15.0, bottom: 5),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '${calendarController.formattedNextFuture}',
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      _buildCupertinoPicker(
-                                        controller.amPmList,
-                                        controller.selectedAmPm,
-                                        controller.setSelectedAmPm,
-                                      ),
-                                      _buildCupertinoPicker(
-                                        controller.hourList,
-                                        controller.selectedHour,
-                                        controller.setSelectedHour,
-                                      ),
-                                      _buildCupertinoPicker(
-                                        controller.minuteList,
-                                        controller.selectedMinute,
-                                        controller.setSelectedMinute,
-                                      ),
-                                    ],
-                                  ),
-                                  ReservationPersonnelForm(
-                                      controller: Get.put(
-                                          ReservationPersonnelController()),
-                                      tag: 'container'),
-                                ],
-                              ),
+          // height: 500,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 10,
+                offset: const Offset(0, 5),
+              ),
+            ],
+          ),
+          child: Obx(() {
+            if (calendarController.selectedFutureDate.value.weekday == 3) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 10),
+                  Visibility(
+                    visible: calendarForm.checkboxController.isChecked.value,
+                    child: Container(
+                      height: 250,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 10,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '${calendarController.formattedNextFuture}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        Visibility(
-                          visible:
-                              calendarForm.checkboxController.isChecked2.value,
-                          child: Container(
-                            // height: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.2),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 5),
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 15.0, bottom: 5),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '${calendarController.formattedNextSaturday}',
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      _buildCupertinoPicker(
-                                          controller2.amPmList,
-                                          controller2.selectedAmPm,
-                                          controller2.setSelectedAmPm),
-                                      _buildCupertinoPicker(
-                                          controller2.hourList,
-                                          controller2.selectedHour,
-                                          controller2.setSelectedHour),
-                                      _buildCupertinoPicker(
-                                          controller2.minuteList,
-                                          controller2.selectedMinute,
-                                          controller2.setSelectedMinute),
-                                    ],
-                                  ),
-                                  ReservationPersonnelForm(
-                                      controller: Get.put(
-                                          ReservationPersonnelController()),
-                                      tag: 'container2'),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Visibility(
-                          visible:
-                              calendarForm.checkboxController.isChecked3.value,
-                          child: Container(
-                            // height: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.2),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 5),
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 15.0, bottom: 5),
-                              child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '${calendarController.formattedNextSunday}',
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        _buildCupertinoPicker(
-                                            controller3.amPmList,
-                                            controller3.selectedAmPm,
-                                            controller3.setSelectedAmPm),
-                                        _buildCupertinoPicker(
-                                            controller3.hourList,
-                                            controller3.selectedHour,
-                                            controller3.setSelectedHour),
-                                        _buildCupertinoPicker(
-                                            controller3.minuteList,
-                                            controller3.selectedMinute,
-                                            controller3.setSelectedMinute),
-                                      ],
-                                    ),
-                                    ReservationPersonnelForm(
-                                        controller: Get.put(
-                                            ReservationPersonnelController()),
-                                        tag: 'container3'),
-                                  ]),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                      ],
-                    );
-                  } else {
-                    return Container(
-                        height: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              blurRadius: 10,
-                              offset: const Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                '${calendarController.formattedNextFuture}',
-                                style: const TextStyle(
-                                  fontSize: 16,
+                              _buildCupertinoPicker(
+                                controller.hourList,
+                                controller.selectedHour,
+                                controller.setSelectedHour,
+                              ),
+                              const Text(
+                                ':',
+                                style: TextStyle(
+                                  fontSize: 25,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(height: 20),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  _buildCupertinoPicker(
-                                      controller.amPmList,
-                                      controller.selectedAmPm,
-                                      controller.setSelectedAmPm),
-                                  _buildCupertinoPicker(
-                                      controller.hourList,
-                                      controller.selectedHour,
-                                      controller.setSelectedHour),
-                                  _buildCupertinoPicker(
-                                      controller.minuteList,
-                                      controller.selectedMinute,
-                                      controller.setSelectedMinute),
-                                ],
+                              _buildCupertinoPicker(
+                                controller.minuteList,
+                                controller.selectedMinute,
+                                controller.setSelectedMinute,
                               ),
-                              ReservationPersonnelForm(
-                                  controller:
-                                      Get.put(ReservationPersonnelController()),
-                                  tag: 'container'),
-                            ]));
-                  }
-                }),
-              ),
-            ))
+                            ],
+                          ),
+                          ReservationPersonnelForm(
+                              controller:
+                                  Get.put(ReservationPersonnelController()),
+                              tag: 'container'),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Visibility(
+                    visible: calendarForm.checkboxController.isChecked2.value,
+                    child: Container(
+                      height: 250,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 10,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '${calendarController.formattedNextSaturday}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              _buildCupertinoPicker(
+                                  controller2.hourList,
+                                  controller2.selectedHour,
+                                  controller2.setSelectedHour),
+                              const Text(
+                                ':',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              _buildCupertinoPicker(
+                                  controller2.minuteList,
+                                  controller2.selectedMinute,
+                                  controller2.setSelectedMinute),
+                            ],
+                          ),
+                          ReservationPersonnelForm(
+                              controller:
+                                  Get.put(ReservationPersonnelController()),
+                              tag: 'container2'),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Visibility(
+                    visible: calendarForm.checkboxController.isChecked3.value,
+                    child: Container(
+                      height: 250,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 10,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${calendarController.formattedNextSunday}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                _buildCupertinoPicker(
+                                    controller3.hourList,
+                                    controller3.selectedHour,
+                                    controller3.setSelectedHour),
+                                const Text(
+                                  ':',
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                _buildCupertinoPicker(
+                                    controller3.minuteList,
+                                    controller3.selectedMinute,
+                                    controller3.setSelectedMinute),
+                              ],
+                            ),
+                            ReservationPersonnelForm(
+                                controller:
+                                    Get.put(ReservationPersonnelController()),
+                                tag: 'container3'),
+                          ]),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              );
+            } else {
+              return Container(
+                  height: 250,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${calendarController.formattedNextFuture}',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _buildCupertinoPicker(
+                                controller.hourList,
+                                controller.selectedHour,
+                                controller.setSelectedHour),
+                            const Text(
+                              ':',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            _buildCupertinoPicker(
+                                controller.minuteList,
+                                controller.selectedMinute,
+                                controller.setSelectedMinute),
+                          ],
+                        ),
+                        ReservationPersonnelForm(
+                            controller:
+                                Get.put(ReservationPersonnelController()),
+                            tag: 'container'),
+                      ]));
+            }
+          }),
+        )
       ],
     );
   }
 
   Widget _buildCupertinoPicker(List<String> itemList, RxString selectedItem,
       Function(String) setSelectedItem) {
-    return Expanded(
+    return Container(
+      width: 180,
+      height: 120,
       child: Obx(
         () => CupertinoPicker(
           scrollController: FixedExtentScrollController(

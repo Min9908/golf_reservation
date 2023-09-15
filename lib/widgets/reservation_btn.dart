@@ -14,6 +14,7 @@ class ReservationBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const Spacer();
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(

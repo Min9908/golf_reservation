@@ -35,13 +35,13 @@ class ReservationPersonnelForm extends StatelessWidget {
                         ),
                       )),
                 ),
+                const Text(
+                  '3명',
+                  style: TextStyle(
+                    fontSize: 20, // Adjust the font size as needed
+                  ),
+                ),
               ],
-            ),
-            const Text(
-              '3명',
-              style: TextStyle(
-                fontSize: 20, // Adjust the font size as needed
-              ),
             ),
             Row(
               children: [
@@ -59,13 +59,13 @@ class ReservationPersonnelForm extends StatelessWidget {
                         ),
                       )),
                 ),
+                const Text(
+                  '4명',
+                  style: TextStyle(
+                    fontSize: 20, // Adjust the font size as needed
+                  ),
+                ),
               ],
-            ),
-            const Text(
-              '4명',
-              style: TextStyle(
-                fontSize: 20, // Adjust the font size as needed
-              ),
             ),
           ],
         ),

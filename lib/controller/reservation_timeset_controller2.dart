@@ -82,7 +82,7 @@ class ReservationTimeSetController2 extends GetxController {
   ];
 
   RxString selectedAmPm = 'AM'.obs;
-  RxString selectedHour = '00'.obs;
+  RxString selectedHour = '06'.obs;
   RxString selectedMinute = '00'.obs;
 
   String get formattedTime {
