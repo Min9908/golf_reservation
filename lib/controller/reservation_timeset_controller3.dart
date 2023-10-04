@@ -17,7 +17,18 @@ class ReservationTimeSetController3 extends GetxController {
     '09',
     '10',
     '11',
-    '12'
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
   ];
   final List<String> minuteList = [
     '00',

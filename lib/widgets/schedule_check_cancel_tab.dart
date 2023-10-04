@@ -172,13 +172,16 @@ class _ScheduleCheckCancelTabState extends State<ScheduleCheckCancelTab> {
                   child: ElevatedButton(
                     onPressed: () => selectBtn('당일'),
                     style: ElevatedButton.styleFrom(
-                      primary:
-                          selectedBtn == '당일' ? Colors.green : Colors.white,
-                      onPrimary:
-                          selectedBtn == '당일' ? Colors.white : Colors.black,
+                      primary: selectedBtn == '당일'
+                          ? Colors.green
+                          : Colors.white, // 안쪽 색깔
+                      onPrimary: selectedBtn == '당일'
+                          ? Colors.white
+                          : Colors.black, // 글꼴 색깔
                       side: BorderSide(
-                        color:
-                            selectedBtn == '당일' ? Colors.green : Colors.black,
+                        color: selectedBtn == '당일'
+                            ? Colors.green
+                            : Colors.black, // 테두리 색깔
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

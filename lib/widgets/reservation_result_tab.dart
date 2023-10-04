@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class ReservationResultTab extends StatefulWidget {
   ReservationResultTab({Key? key}) : super(key: key);
@@ -11,7 +12,8 @@ class ReservationResultTab extends StatefulWidget {
 
 class _ReservationResultTabState extends State<ReservationResultTab> {
   List<Map<String, dynamic>> resultLogData = [];
-
+  String selectedBtn = '1주일';
+  String selectedSortOption = '최근일자순';
   @override
   void initState() {
     super.initState();
@@ -38,19 +40,30 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
     }
   }
 
-  String selectedBtn = '1주일';
-
   void selectBtn(String btnText) {
     setState(() {
       selectedBtn = btnText;
     });
   }
 
-  String selectedSortOption = '최근일자순';
-
-  void selectSortOption(String option) {
+  void _sortResultLogData(String option) {
     setState(() {
       selectedSortOption = option;
+      if (selectedSortOption == '최근일자순') {
+        resultLogData.sort((a, b) {
+          final DateFormat format = DateFormat('yyyy년 M월 d일 EEEE', 'ko_KR');
+          final DateTime dateA = format.parse(a['nextFuture']);
+          final DateTime dateB = format.parse(b['nextFuture']);
+          return dateA.compareTo(dateB);
+        });
+      } else if (selectedSortOption == '오래된순') {
+        resultLogData.sort((a, b) {
+          final DateFormat format = DateFormat('yyyy년 M월 d일 EEEE', 'ko_KR');
+          final DateTime dateA = format.parse(a['nextFuture']);
+          final DateTime dateB = format.parse(b['nextFuture']);
+          return dateB.compareTo(dateA);
+        });
+      }
     });
   }
 
@@ -140,7 +153,7 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
                         fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                   PopupMenuButton<String>(
-                    onSelected: selectSortOption,
+                    onSelected: _sortResultLogData,
                     itemBuilder: (BuildContext context) =>
                         <PopupMenuEntry<String>>[
                       const PopupMenuItem<String>(

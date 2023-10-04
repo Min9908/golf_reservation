@@ -16,9 +16,9 @@ class ReservationCalendarController extends GetxController {
   RxString formattedSelectedDay = ''.obs;
 
   void updateSelectedDate(DateTime date) {
-    selectedFutureDate.value = date.add(const Duration(days: 14));
-    nextSaturday.value = date.add(const Duration(days: 10));
-    nextSunday.value = date.add(const Duration(days: 11));
+    selectedFutureDate.value = date.add(const Duration(days: 14)); // 14
+    nextSaturday.value = date.add(const Duration(days: 10)); // 10
+    nextSunday.value = date.add(const Duration(days: 11)); // 11
     selectedDate.value = date;
 
     formattedNextFuture.value =
@@ -28,7 +28,7 @@ class ReservationCalendarController extends GetxController {
     formattedNextSunday.value =
         '${nextSunday.value.year}년 ${nextSunday.value.month}월 ${nextSunday.value.day}일 ${_getWeekdayString(nextSunday.value.weekday)}';
     formattedSelectedDay.value =
-    '${selectedDate.value.year}년 ${selectedDate.value.month}월 ${selectedDate.value.day}일 ${_getWeekdayString(selectedDate.value.weekday)}';
+        '${selectedDate.value.year}년 ${selectedDate.value.month}월 ${selectedDate.value.day}일 ${_getWeekdayString(selectedDate.value.weekday)}';
   }
 
   String _getWeekdayString(int weekday) {
@@ -67,7 +67,7 @@ class ReservationCalendarController extends GetxController {
     formattedNextSunday.value =
         '${nextSunday.value.year}년 ${nextSunday.value.month}월 ${nextSunday.value.day}일 ${_getWeekdayString(nextSunday.value.weekday)}';
     formattedSelectedDay.value =
-    '${selectedDate.value.year}년 ${selectedDate.value.month}월 ${selectedDate.value.day}일 ${_getWeekdayString(selectedDate.value.weekday)}';
+        '${selectedDate.value.year}년 ${selectedDate.value.month}월 ${selectedDate.value.day}일 ${_getWeekdayString(selectedDate.value.weekday)}';
 
     ever(selectedFutureDate,
         (date) => debugPrint('selectedFutureDate changed: $date'));
@@ -75,7 +75,6 @@ class ReservationCalendarController extends GetxController {
     ever(nextSunday, (date) => debugPrint('nextSunday changed: $date'));
     ever(isWeekendSelected,
         (flag) => debugPrint('isWeekendSelected changed: $flag'));
-    ever(selectedDate,
-        (date) => debugPrint('selectedDate changed: $date'));
+    ever(selectedDate, (date) => debugPrint('selectedDate changed: $date'));
   }
 }
