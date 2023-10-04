@@ -30,8 +30,6 @@ class _ScheduleCheckCancelTabState extends State<ScheduleCheckCancelTab> {
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body) as Map<String, dynamic>;
         reservationData = jsonData['reservations'].cast<Map<String, dynamic>>();
-        final allReservations =
-            jsonData['reservations'].cast<Map<String, dynamic>>();
         _sortResultLogData('최근일자순');
         // 오늘의 날짜를 가져옵니다.
         final today = DateTime.now();

@@ -12,7 +12,7 @@ class ReservationResultTab extends StatefulWidget {
 
 class _ReservationResultTabState extends State<ReservationResultTab> {
   List<Map<String, dynamic>> resultLogData = [];
-  String selectedBtn = '1주일';
+  String selectedBtn = '전체';
   String selectedSortOption = '최근일자순';
   @override
   void initState() {
@@ -29,6 +29,36 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body) as Map<String, dynamic>;
         resultLogData = jsonData['resultLogData'].cast<Map<String, dynamic>>();
+        _sortResultLogData('최근일자순');
+        // 오늘의 날짜를 가져옵니다.
+        final today = DateTime.now();
+
+        if (selectedBtn == '당일') {
+          // 당일 버튼을 클릭한 경우, 오늘 날짜와 스케줄 일시가 같은 데이터만 가져옵니다.
+          resultLogData = resultLogData.where((reservation) {
+            DateFormat format = DateFormat('yyyy년 MM월 dd일 EEEE', 'ko_KR');
+            final selectedDay = format.parse(reservation['selectedDay']);
+            return _isSameDate(selectedDay, today);
+          }).toList();
+        } else if (selectedBtn == '1주일') {
+          // 1주일 버튼을 클릭한 경우, 오늘부터 1주일 후까지 스케줄 일시가 겹치는 데이터만 가져옵니다.
+          final oneWeekAgo = today.subtract(Duration(days: 7)); // 수정
+          resultLogData = resultLogData.where((reservation) {
+            DateFormat format = DateFormat('yyyy년 MM월 dd일 EEEE', 'ko_KR');
+            final selectedDay = format.parse(reservation['selectedDay']);
+            return selectedDay.isAfter(oneWeekAgo) && // 수정
+                selectedDay.isBefore(today); // 수정
+          }).toList();
+        } else if (selectedBtn == '1개월') {
+          // 1개월 버튼을 클릭한 경우, 오늘부터 1개월 후까지 스케줄 일시가 겹치는 데이터만 가져옵니다.
+          final oneMonthAgo = today.subtract(Duration(days: 30)); // 수정
+          resultLogData = resultLogData.where((reservation) {
+            DateFormat format = DateFormat('yyyy년 MM월 dd일 EEEE', 'ko_KR');
+            final selectedDay = format.parse(reservation['selectedDay']);
+            return selectedDay.isAfter(oneMonthAgo) && // 수정
+                selectedDay.isBefore(today); // 수정
+          }).toList();
+        }
 
         debugPrint('Received data from server:');
         debugPrint(resultLogData.toString());
@@ -40,10 +70,17 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
     }
   }
 
+  bool _isSameDate(DateTime date1, DateTime date2) {
+    return date1.year == date2.year &&
+        date1.month == date2.month &&
+        date1.day == date2.day;
+  }
+
   void selectBtn(String btnText) {
     setState(() {
       selectedBtn = btnText;
     });
+    _fetchResultLogData();
   }
 
   void _sortResultLogData(String option) {
@@ -138,6 +175,27 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
                       minimumSize: const Size(50, 40),
                     ),
                     child: const Text('1개월'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: ElevatedButton(
+                    onPressed: () => selectBtn('전체'),
+                    style: ElevatedButton.styleFrom(
+                      primary:
+                          selectedBtn == '전체' ? Colors.green : Colors.white,
+                      onPrimary:
+                          selectedBtn == '전체' ? Colors.white : Colors.black,
+                      side: BorderSide(
+                        color:
+                            selectedBtn == '전체' ? Colors.green : Colors.black,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      minimumSize: const Size(50, 40),
+                    ),
+                    child: const Text('전체'),
                   ),
                 ),
               ],
