@@ -42,7 +42,7 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
           }).toList();
         } else if (selectedBtn == '1주일') {
           // 1주일 버튼을 클릭한 경우, 오늘부터 1주일 후까지 스케줄 일시가 겹치는 데이터만 가져옵니다.
-          final oneWeekAgo = today.subtract(Duration(days: 7)); // 수정
+          final oneWeekAgo = today.subtract(Duration(days: 8)); // 수정
           resultLogData = resultLogData.where((reservation) {
             DateFormat format = DateFormat('yyyy년 MM월 dd일 EEEE', 'ko_KR');
             final selectedDay = format.parse(reservation['selectedDay']);
@@ -51,7 +51,7 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
           }).toList();
         } else if (selectedBtn == '1개월') {
           // 1개월 버튼을 클릭한 경우, 오늘부터 1개월 후까지 스케줄 일시가 겹치는 데이터만 가져옵니다.
-          final oneMonthAgo = today.subtract(Duration(days: 30)); // 수정
+          final oneMonthAgo = today.subtract(Duration(days: 31)); // 수정
           resultLogData = resultLogData.where((reservation) {
             DateFormat format = DateFormat('yyyy년 MM월 dd일 EEEE', 'ko_KR');
             final selectedDay = format.parse(reservation['selectedDay']);
