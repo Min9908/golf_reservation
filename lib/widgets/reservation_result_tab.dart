@@ -89,15 +89,15 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
       if (selectedSortOption == '최근일자순') {
         resultLogData.sort((a, b) {
           final DateFormat format = DateFormat('yyyy년 M월 d일 EEEE', 'ko_KR');
-          final DateTime dateA = format.parse(a['nextFuture']);
-          final DateTime dateB = format.parse(b['nextFuture']);
+          final DateTime dateA = format.parse(a['selectedDay']);
+          final DateTime dateB = format.parse(b['selectedDay']);
           return dateA.compareTo(dateB);
         });
       } else if (selectedSortOption == '오래된순') {
         resultLogData.sort((a, b) {
           final DateFormat format = DateFormat('yyyy년 M월 d일 EEEE', 'ko_KR');
-          final DateTime dateA = format.parse(a['nextFuture']);
-          final DateTime dateB = format.parse(b['nextFuture']);
+          final DateTime dateA = format.parse(a['selectedDay']);
+          final DateTime dateB = format.parse(b['selectedDay']);
           return dateB.compareTo(dateA);
         });
       }

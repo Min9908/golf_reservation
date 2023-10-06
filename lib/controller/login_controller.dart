@@ -18,7 +18,7 @@ class LoginController extends GetxController {
     // _id.value = dotenv.env['ID'] ?? '';
     // _pw.value = dotenv.env['PW'] ?? '';
     _id.value = '01071443006';
-    _pw.value = 's1823642@@';
+    _pw.value = 's1823642@';
   }
 
   void clear() {
