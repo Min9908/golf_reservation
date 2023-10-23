@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:golf_regist_app/controller/login_controller.dart';
+import 'package:golf_regist_app/controller/reservation_orderCheck_Controller.dart';
 import 'package:golf_regist_app/controller/reservation_personnel_controller.dart';
 import 'package:golf_regist_app/controller/reservation_timeset_controller.dart';
 import 'package:http/http.dart' as http;
@@ -29,6 +30,8 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
   final LoginController loginController = Get.find<LoginController>();
   final ReservationPersonnelController personnelController =
       Get.find<ReservationPersonnelController>();
+  final ReservationOrderCheckController orderController =
+      Get.find<ReservationOrderCheckController>();
   final ReservationTimeSetController timeSetController =
       Get.find<ReservationTimeSetController>();
   final ReservationTimeSetController2 timeSetController2 =
@@ -72,6 +75,8 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
             'selectedDay': calendarController.formattedSelectedDay.toString(),
             'nextFuture': calendarController.formattedNextFuture.value,
             'futureTime': timeSetController.formattedTime,
+            'orderCheck':
+                orderController.getSelectedValue('container').toString(),
           },
         );
 
@@ -115,6 +120,8 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
             'selectedDay': calendarController.formattedSelectedDay.toString(),
             'nextFuture': calendarController.formattedNextSaturday.value,
             'futureTime': timeSetController2.formattedTime,
+            'orderCheck':
+                orderController.getSelectedValue('container').toString(),
           },
         );
 
@@ -158,6 +165,8 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
             'selectedDay': calendarController.formattedSelectedDay.toString(),
             'nextFuture': calendarController.formattedNextSunday.value,
             'futureTime': timeSetController3.formattedTime,
+            'orderCheck':
+                orderController.getSelectedValue('container').toString(),
           },
         );
 

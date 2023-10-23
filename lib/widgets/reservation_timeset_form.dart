@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:golf_regist_app/controller/reservation_calendar_controller.dart';
+import 'package:golf_regist_app/controller/reservation_orderCheck_Controller.dart';
 import 'package:golf_regist_app/controller/reservation_personnel_controller.dart';
 import 'package:golf_regist_app/controller/reservation_timeset_controller.dart';
 import 'package:golf_regist_app/controller/reservation_timeset_controller2.dart';
@@ -11,6 +12,7 @@ import 'package:golf_regist_app/controller/time_priorities_controller.dart';
 import 'package:golf_regist_app/widgets/PriorityListTile.dart';
 import 'package:golf_regist_app/widgets/reservation_calendar_form.dart';
 import 'package:golf_regist_app/widgets/reservation_personnel_form.dart';
+import 'package:golf_regist_app/widgets/reservation_orderCheck_form.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:flutter/services.dart';
 
@@ -309,6 +311,10 @@ class _ReservationTimeSetFormState extends State<ReservationTimeSetForm> {
                         ReservationPersonnelForm(
                             controller:
                                 Get.put(ReservationPersonnelController()),
+                            tag: 'container'),
+                        ReservationOrderCheckForm(
+                            controller:
+                                Get.put(ReservationOrderCheckController()),
                             tag: 'container'),
                       ]));
             }
