@@ -14,6 +14,7 @@ import '../controller/reservation_timeset_controller3.dart';
 import '../widgets/ReservationPersonnelAndTimesetForm.dart';
 import '../widgets/reservation_btn.dart';
 import '../widgets/reservation_calendar_form.dart';
+import '../config.dart';
 
 class ScheduleReservationTab extends StatefulWidget {
   // 예약 주문일 지정 달력 폼
@@ -66,7 +67,7 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
       if (calendarForm.checkboxController.isChecked.value ||
           selectedDayOfWeek != 3) {
         final response = await http.post(
-          Uri.parse("http://61.83.77.86:5000/reservation"),
+          Uri.parse("$baseUrl/reservation"),
           body: {
             'id': loginController.id,
             'pw': loginController.pw,
@@ -111,7 +112,7 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
       if (calendarForm.checkboxController.isChecked2.value &&
           selectedDayOfWeek == 3) {
         final response = await http.post(
-          Uri.parse("http://61.83.77.86:5000/reservation"),
+          Uri.parse("$baseUrl/reservation"),
           body: {
             'id': loginController.id,
             'pw': loginController.pw,
@@ -121,7 +122,7 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
             'nextFuture': calendarController.formattedNextSaturday.value,
             'futureTime': timeSetController2.formattedTime,
             'orderCheck':
-                orderController.getSelectedValue('container').toString(),
+                orderController.getSelectedValue('container2').toString(),
           },
         );
 
@@ -156,7 +157,7 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
       if (calendarForm.checkboxController.isChecked3.value &&
           selectedDayOfWeek == 3) {
         final response = await http.post(
-          Uri.parse("http://61.83.77.86:5000/reservation"),
+          Uri.parse("$baseUrl/reservation"),
           body: {
             'id': loginController.id,
             'pw': loginController.pw,
@@ -166,7 +167,7 @@ class _ScheduleReservationTabState extends State<ScheduleReservationTab> {
             'nextFuture': calendarController.formattedNextSunday.value,
             'futureTime': timeSetController3.formattedTime,
             'orderCheck':
-                orderController.getSelectedValue('container').toString(),
+                orderController.getSelectedValue('container3').toString(),
           },
         );
 

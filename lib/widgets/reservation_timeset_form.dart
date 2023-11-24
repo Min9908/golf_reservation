@@ -148,6 +148,10 @@ class _ReservationTimeSetFormState extends State<ReservationTimeSetForm> {
                               controller:
                                   Get.put(ReservationPersonnelController()),
                               tag: 'container'),
+                          ReservationOrderCheckForm(
+                              controller:
+                                  Get.put(ReservationOrderCheckController()),
+                              tag: 'container'),
                         ],
                       ),
                     ),
@@ -203,6 +207,10 @@ class _ReservationTimeSetFormState extends State<ReservationTimeSetForm> {
                               controller:
                                   Get.put(ReservationPersonnelController()),
                               tag: 'container2'),
+                          ReservationOrderCheckForm(
+                              controller:
+                                  Get.put(ReservationOrderCheckController()),
+                              tag: 'container2'),
                         ],
                       ),
                     ),
@@ -256,6 +264,10 @@ class _ReservationTimeSetFormState extends State<ReservationTimeSetForm> {
                             ReservationPersonnelForm(
                                 controller:
                                     Get.put(ReservationPersonnelController()),
+                                tag: 'container3'),
+                            ReservationOrderCheckForm(
+                                controller:
+                                    Get.put(ReservationOrderCheckController()),
                                 tag: 'container3'),
                           ]),
                     ),

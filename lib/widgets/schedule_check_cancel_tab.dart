@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import '../config.dart';
 
 class ScheduleCheckCancelTab extends StatefulWidget {
   ScheduleCheckCancelTab({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _ScheduleCheckCancelTabState extends State<ScheduleCheckCancelTab> {
   Future<void> _fetchReservationData() async {
     try {
       final response = await http.get(
-        Uri.parse("http://61.83.77.86:5000/reservation_table"),
+        Uri.parse("$baseUrl/reservation_table"),
       );
 
       if (response.statusCode == 200) {
@@ -152,7 +153,7 @@ class _ScheduleCheckCancelTabState extends State<ScheduleCheckCancelTab> {
     try {
       final response = await http.delete(
         // Uri.parse("${dotenv.env['BASEURL']}/reservation_cancel/$id"),
-        Uri.parse("http://61.83.77.86:5000/reservation_cancel/$id"),
+        Uri.parse("$baseUrl/reservation_cancel/$id"),
       );
 
       if (response.statusCode == 200) {

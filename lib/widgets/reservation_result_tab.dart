@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import '../config.dart';
 
 class ReservationResultTab extends StatefulWidget {
   ReservationResultTab({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _ReservationResultTabState extends State<ReservationResultTab> {
   Future<void> _fetchResultLogData() async {
     try {
       final response = await http.get(
-        Uri.parse("http://61.83.77.86:5000/reservation_result"),
+        Uri.parse("$baseUrl/reservation_result"),
       );
 
       if (response.statusCode == 200) {
